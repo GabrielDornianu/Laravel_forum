@@ -34,6 +34,11 @@ Route::get('/{provider}/redirect', [
   'as'   => 'social.callback'
 ]);
 
+Route::get('discussion/{slug}', [
+  'uses' => 'DiscussionsController@show',
+  'as'   => 'discussion'
+]);
+
 Route::group(['middleware' => 'auth'], function(){
   Route::resource('channels', 'ChannelsController');
 
@@ -47,14 +52,19 @@ Route::group(['middleware' => 'auth'], function(){
     'as'   => 'discussions.store'
   ]);
 
-  Route::get('discussion/{slug}', [
-    'uses' => 'DiscussionsController@show',
-    'as'   => 'discussion'
-  ]);
-
   Route::post('discussion/reply/{id}', [
     'uses' => 'DiscussionsController@reply',
     'as'   => 'discussion.reply'
+  ]);
+
+  Route::get('/reply/like/{id}', [
+    'uses' => 'RepliesController@like',
+    'as'   => 'reply.like'
+  ]);
+
+  Route::get('/reply/dislike/{id}', [
+    'uses' => 'RepliesController@dislike',
+    'as'   => 'reply.dislike'
   ]);
 });
 
