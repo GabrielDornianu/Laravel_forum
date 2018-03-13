@@ -31,9 +31,11 @@
     <p class="text-center">{{ $r->content }}</p>
   </div>
   <div class="panel-footer">
-    <div>
-      <p>LIKE</p>
-    </div>
+    @if($r->is_liked_by_auth_user())
+      <a href="/" class="btn btn-danger">Unlike</a>
+    @else
+      <a href="/" class="btn btn-primary">Like</a>
+    @endif
   </div>
 </div>
 @endforeach
