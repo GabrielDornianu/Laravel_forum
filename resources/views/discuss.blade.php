@@ -10,12 +10,16 @@
           <label for="channel">Pick a channel</label>
           <select name="channel_id" class="form-control">
             @foreach($channels as $channel)
-              <option value="channel_id">{{ $channel->title }}</option>
+              <option value="{{ $channel->id }}">{{ $channel->title }}</option>
             @endforeach
           </select>
         </div>
         <div class="form-group">
-          <label for="content">Ask a question</label>
+          <label for="title">Title</label>
+          <input class="form-control" name="title">
+        </div>
+        <div class="form-group">
+          <label for="content">Question</label>
           <textarea name="content" class="form-control"></textarea>
         </div>
         <div class="form-group">
