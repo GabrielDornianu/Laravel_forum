@@ -16,7 +16,15 @@ class UserstableSeeder extends Seeder
           'password' => bcrypt('admin'),
           'email' => 'admin@forum.dev',
           'admin' => 1,
-          'avatar' => asset('avatars/avatar.png')
+          'avatar' => 'avatars/avatar.png'
+        ]);
+
+        App\User::create([
+          'name' => 'Iulian Dornianu',
+          'password' => bcrypt('password'),
+          'email' => 'iuliandornianu97@yahoo.com',
+          'admin' => 1,
+          'avatar' => 'avatars/avatar.png'
         ]);
     }
 }
