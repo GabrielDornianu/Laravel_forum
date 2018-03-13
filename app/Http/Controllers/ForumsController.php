@@ -10,7 +10,7 @@ class ForumsController extends Controller
 {
     public function index()
     {
-      $discussions = Discussion::orderBy('created_at', 'desc')->paginate(3);
+      $discussions = Discussion::orderBy('created_at', 'desc')->paginate(5);
       return view('forum', ['d' => $discussions]);
     }
 

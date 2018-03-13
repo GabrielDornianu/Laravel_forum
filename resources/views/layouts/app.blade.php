@@ -81,6 +81,9 @@
               </div>
               <div class="panel-body">
                 <ul class="list-group">
+                  <li class="list-group-item">
+                    <a href="{{ route('forum') }}"> Home </a>
+                  </li>
                   @foreach($channels as $channel)
                     <li class="list-group-item">
                       <a href="{{ route('channel', ['slug' => $channel->slug]) }}">{{ $channel->title }}</a>

@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 
 Route::get('/forum', [
   'uses' => 'ForumsController@index',
@@ -39,12 +39,13 @@ Route::get('discussion/{slug}', [
   'as'   => 'discussion'
 ]);
 
+Route::get('/channel/{slug}', [
+  'uses' => 'ForumsController@channel',
+  'as'   => 'channel'
+]);
+
 Route::group(['middleware' => 'auth'], function(){
   Route::resource('channels', 'ChannelsController');
-  Route::get('/channel/{slug}', [
-    'uses' => 'ForumsController@channel',
-    'as'   => 'channel'
-  ]);
 
   Route::get('discussions/create', [
     'uses' => 'DiscussionsController@create',

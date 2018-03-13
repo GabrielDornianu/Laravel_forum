@@ -84,6 +84,8 @@
 
                 <div class="links">
                     <a href="{{ route('social.auth', ['provider' => 'github']) }}">GitHub</a>
+                    <a href="{{ route('social.auth', ['provider' => 'facebook']) }}">Facebook</a>
+                    <a href="/login">Email</a>
                 </div>
             </div>
         </div>

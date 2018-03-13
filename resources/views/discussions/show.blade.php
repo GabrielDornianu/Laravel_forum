@@ -40,6 +40,7 @@
 </div>
 @endforeach
 
+@if(Auth::check())
 <div class="panel panel-default">
   <div class="panel-body">
     <form action="{{ route('discussion.reply', ['id' => $discussion->id]) }}" method="post">
@@ -54,4 +55,5 @@
     </form>
   </div>
 </div>
+@endif
 @endsection
