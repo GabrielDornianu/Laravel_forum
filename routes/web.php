@@ -83,6 +83,11 @@ Route::get('/discussion/unwatch/{id}', [
   'as' => 'discussion.unwatch'
 ]);
 
+Route::get('/discussion/best/reply/{id}', [
+  'uses' => 'RepliesController@best_answer',
+  'as'   => 'discussion.best.answer'
+]);
+
 // Route::get('/discuss', function(){
 //   return view('discuss');
 // });

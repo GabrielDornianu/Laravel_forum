@@ -18,6 +18,19 @@
     </p>
   </div>
   <div class="panel-footer">
+    @if($best_answer)
+      <div class="text-center">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h1 class="text-center">BEST ANSWER</h1>
+            <img src="{{ $best_answer->user->avatar }}" width="70"/>&nbsp;&nbsp;&nbsp;
+          </div>
+          <div class="panel-body">
+            {{ $best_answer->content }}
+          </div>
+        </div>
+      </div>
+    @endif
     <p>
       {{ $discussion->replies->count() }} replies
     </p>
@@ -28,6 +41,9 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <img src="{{ $r->user->avatar }}" width="70"/>&nbsp;&nbsp;&nbsp;
+    @if(! ($best_answer))
+    <a href="{{ route('discussion.best.answer', ['id' => $r->id]) }}" class="btn btn-primary btn-xs pull-right">Mark as best answer</a>
+    @endif
   </div>
   <div class="panel-body">
     <p class="text-center">{{ $r->content }}</p>
