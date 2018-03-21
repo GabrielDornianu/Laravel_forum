@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -72,6 +73,16 @@
         </nav>
 
         <div class="container">
+          @if($errors->count() > 0)
+            <ul class="list-group">
+              @foreach($errors->all() as $e)
+                <li class="list-group-item">{{ $e }}</li>
+              @endforeach
+            </ul>
+          @endif
+        </div>
+
+        <div class="container">
           <div class="col-md-4">
             <a href="{{ route('discussions.create') }}" class="btn btn-primary form-control">Create discussion</a>
             </br>
@@ -101,5 +112,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+      @if(Session::has('success'))
+        toastr.success('{{ Session::get('success') }}');
+      @endif
+    </script>
 </body>
 </html>

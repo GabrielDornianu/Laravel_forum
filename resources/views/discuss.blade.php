@@ -16,11 +16,11 @@
         </div>
         <div class="form-group">
           <label for="title">Title</label>
-          <input class="form-control" name="title">
+          <input class="form-control" name="title" value="{{ old('title') }}">
         </div>
         <div class="form-group">
           <label for="content">Question</label>
-          <textarea name="content" class="form-control"></textarea>
+          <textarea name="content" class="form-control">{{ old('content') }}</textarea>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-success">Add discussion</button>
