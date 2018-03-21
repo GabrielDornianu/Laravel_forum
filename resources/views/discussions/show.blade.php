@@ -4,7 +4,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <img src="{{ $discussion->user->avatar }}" width="70"/>&nbsp;&nbsp;&nbsp;
-    <span>{{ $discussion->user->name }}, <b>{{ $discussion->created_at->diffForHumans() }}</b></span>
+    <span>{{ $discussion->user->name }}, <b>{{ $discussion->created_at->diffForHumans() }}, ( {{ $discussion->user->points }} )</b></span>
     @if($discussion->is_being_watched_by_auth_user())
       <a href="{{ route('discussion.unwatch', ['id' => $discussion->id]) }}" class="btn btn-default pull-right">Unwatch</a>
     @else
@@ -42,7 +42,9 @@
   <div class="panel-heading">
     <img src="{{ $r->user->avatar }}" width="70"/>&nbsp;&nbsp;&nbsp;
     @if(! ($best_answer))
-    <a href="{{ route('discussion.best.answer', ['id' => $r->id]) }}" class="btn btn-primary btn-xs pull-right">Mark as best answer</a>
+      @if(Auth::id() == $discussion->user->id)
+        <a href="{{ route('discussion.best.answer', ['id' => $r->id]) }}" class="btn btn-primary btn-xs pull-right">Mark as best answer</a>
+      @endif  
     @endif
   </div>
   <div class="panel-body">

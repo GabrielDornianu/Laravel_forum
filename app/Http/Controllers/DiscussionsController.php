@@ -65,6 +65,9 @@ class DiscussionsController extends Controller
         array_push($watchers, User::find($w->user_id));
       }
 
+      $reply->user->points += 25;
+      $reply->user->save();
+
       Notification::send($watchers, new \App\Notifications\NewReplyAdded($d));
 
       Session::flash('success', 'Replied to discussion');
