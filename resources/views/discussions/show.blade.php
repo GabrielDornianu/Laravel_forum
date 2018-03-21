@@ -5,7 +5,11 @@
   <div class="panel-heading">
     <img src="{{ $discussion->user->avatar }}" width="70"/>&nbsp;&nbsp;&nbsp;
     <span>{{ $discussion->user->name }}, <b>{{ $discussion->created_at->diffForHumans() }}</b></span>
-    <a href="{{ route('discussion', ['slug' => $discussion->slug]) }}" class="btn btn-default pull-right">View</a>
+    @if($discussion->is_being_watched_by_auth_user())
+      <a href="{{ route('discussion.unwatch', ['id' => $discussion->id]) }}" class="btn btn-default pull-right">Unwatch</a>
+    @else
+      <a href="{{ route('discussion.watch', ['id' => $discussion->id]) }}" class="btn btn-default pull-right">Watch</a>
+    @endif
   </div>
   <div class="panel-body">
     <h4 class="text-center">{{ $discussion->title }}</h4>
@@ -24,8 +28,6 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <img src="{{ $r->user->avatar }}" width="70"/>&nbsp;&nbsp;&nbsp;
-    <span>{{ $r->user->name }}, <b>{{ $r->created_at->diffForHumans() }}</b></span>
-    <a href="{{ route('discussion', ['slug' => $r->slug]) }}" class="btn btn-default pull-right">View</a>
   </div>
   <div class="panel-body">
     <p class="text-center">{{ $r->content }}</p>

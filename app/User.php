@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
       return $this->hasMany('App\Discussion');
     }
+
+    public function watchers()
+    {
+      return $this->hasMany('App\Watcher');
+    }
 }
