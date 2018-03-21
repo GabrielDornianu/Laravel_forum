@@ -7,7 +7,12 @@
       <div class="panel-heading">
         <img src="{{ $discussion->user->avatar }}" width="70"/>&nbsp;&nbsp;&nbsp;
         <span>{{ $discussion->user->name }}, <b>{{ $discussion->created_at->diffForHumans() }}</b></span>
-        <a href="{{ route('discussion', ['slug' => $discussion->slug]) }}" class="btn btn-default pull-right">View</a>
+        @if($discussion->has_best_answer())
+          <span class="btn btn-default pull-right btn-xs">closed</span>
+        @else
+          <span class="btn btn-danger pull-right btn-xs">open</span>
+        @endif
+        <a href="{{ route('discussion', ['slug' => $discussion->slug]) }}" class="btn btn-default pull-right btn-xs">View</a>
       </div>
       <div class="panel-body">
         <h4 class="text-center">{{ $discussion->title }}</h4>

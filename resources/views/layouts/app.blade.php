@@ -95,6 +95,15 @@
                   <li class="list-group-item">
                     <a href="{{ route('forum') }}"> Home </a>
                   </li>
+                  <li class="list-group-item">
+                    <a href="/forum?filter=me"> My discussion </a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="/forum?filter=solved"> Answered </a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="/forum?filter=unsolved"> Unanswered </a>
+                  </li>
                   @foreach($channels as $channel)
                     <li class="list-group-item">
                       <a href="{{ route('channel', ['slug' => $channel->slug]) }}">{{ $channel->title }}</a>
